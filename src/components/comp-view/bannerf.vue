@@ -99,8 +99,8 @@ export default {
   }
   .left {
     .zhu {
-      width: 480px;
-      height: 480px;
+      width: 1.5625rem;
+      height: 1.302083rem;
     }
   }
   .center {
