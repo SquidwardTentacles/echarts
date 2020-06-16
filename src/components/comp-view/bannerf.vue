@@ -2,26 +2,36 @@
   <div class="bannerf flexbox between">
     <div class="left">
       <div class="zhu" id="zhu"></div>
+      <div class="zhu" id="line"></div>
     </div>
     <div class="center">center</div>
     <div class="right">right</div>
   </div>
 </template>
 <script>
-import echarts from "echarts";
+import echarts from "echarts/lib/echarts";
+// 引入柱状图
+require('echarts/lib/chart/bar');
+// 引入提示框和标题组件
+require('echarts/lib/component/tooltip');
+require('echarts/lib/component/title');
+// 引入折线图
+require("echarts/lib/chart/line");
 export default {
   data() {
     return {};
   },
   mounted() {
     this.initialization();
+    this.lineWatch()
   },
   methods: {
+    // 柱形图
     initialization() {
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById("zhu"));
       // 绘制图表
-      let dataArr = ["衬衫", "羊毛衫", "雪纺衫", "裤子"];
+      let dataArr = ["衬衫", "羊毛", "雪纺", "裤子"];
       myChart.setOption({
         // 定义legend图标颜色
         color: ["#f24e06", "#f24e06", "#e2ff1f", "#069dee"],
@@ -29,12 +39,19 @@ export default {
         legend: {
           data: dataArr,
           left: "left",
-          top: "middle",
+          bottom: 20,
           // legend排列方向
-          orient: "vertical"
+          orient: "vertical",
+          textStyle:{
+            fontSize:10
+          },
+          itemWidth:10,
+          itemHeight:8
         },
         grid: {
-          left: "30%"
+          left: "30%",
+          bottom:20,
+          show:false
         },
         title: {
           text: "ECharts 入门示例"
@@ -76,10 +93,6 @@ export default {
             type: "bar",
             data: [5, 20, 36, 10],
             barWidth: "40%",
-            // legendHoverLink: true,
-            // itemStyle: {
-            //   barBorderRadius: [10, 10, 0, 0],
-            // },
             itemStyle: {
               normal: {
                 color: function(params) {
@@ -90,11 +103,11 @@ export default {
             }
           },
           {
-            name: "羊毛衫",
+            name: "羊毛",
             type: "bar"
           },
           {
-            name: "雪纺衫",
+            name: "雪纺",
             type: "bar"
           },
           {
@@ -106,7 +119,70 @@ export default {
       window.addEventListener("resize", function() {
         myChart.resize();
       });
-    }
+    },
+// 折线图
+lineWatch() {
+let myChart = echarts.init(document.getElementById('line'))
+var option = {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false
+    },
+    yAxis: {
+        type: 'value',
+        boundaryGap: [0, '30%']
+    },
+    visualMap: {
+        type: 'piecewise',
+        show: false,
+        dimension: 0,
+        seriesIndex: 0,
+        pieces: [{
+            gt: 1,
+            lt: 3,
+            color: 'rgba(0, 180, 0, 0.5)'
+        }, {
+            gt: 5,
+            lt: 7,
+            color: 'rgba(0, 180, 0, 0.5)'
+        }]
+    },
+    series: [
+        {
+            type: 'line',
+            smooth: 0.6,
+            symbol: 'none',
+            lineStyle: {
+                color: 'green',
+                width: 5
+            },
+            markLine: {
+                symbol: ['none', 'none'],
+                label: {show: false},
+                data: [
+                    {xAxis: 1},
+                    {xAxis: 3},
+                    {xAxis: 5},
+                    {xAxis: 7}
+                ]
+            },
+            areaStyle: {},
+            data: [
+                ['2019-10-10', 200],
+                ['2019-10-11', 400],
+                ['2019-10-12', 650],
+                ['2019-10-13', 500],
+                ['2019-10-14', 250],
+                ['2019-10-15', 300],
+                ['2019-10-16', 450],
+                ['2019-10-17', 300],
+                ['2019-10-18', 100]
+            ]
+        }
+    ]
+};
+myChart.setOption(option)
+}
   }
 };
 </script>
