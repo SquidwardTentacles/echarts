@@ -1,12 +1,11 @@
 <template>
   <div class="about"
        id="div">
-    <el-carousel direction="vertical"
-                 ref="carousel"
+    <el-carousel ref="carousel"
                  :loop="false"
                  :autoplay="false">
       <el-carousel-item>
-        <bannerf></bannerf>
+        <production></production>
       </el-carousel-item>
       <el-carousel-item>
         <bannert></bannert>
@@ -15,11 +14,11 @@
   </div>
 </template>
 <script>
-import bannerf from '../components/comp-view/bannerf'
+import production from '../components/comp-view/production'
 import bannert from '../components/comp-view/bannert'
 export default {
   components: {
-    bannerf,
+    production,
     bannert
   },
   data () {
@@ -72,31 +71,31 @@ export default {
 <style lang="less">
 .about {
   height: 100%;
-}
-.el-carousel.el-carousel--vertical {
-  width: 100%;
-  height: 100%;
-  .el-carousel__container {
+  .el-carousel {
+    width: 100%;
     height: 100%;
+    .el-carousel__container {
+      height: 100%;
+    }
+    // .el-carousel__indicators.el-carousel__indicators--vertical {
+    //   width: 100%;
+    //   height: 100%;
+    // }
   }
-  // .el-carousel__indicators.el-carousel__indicators--vertical {
-  //   width: 100%;
-  //   height: 100%;
-  // }
-}
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 200px;
-  margin: 0;
-}
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
 
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+  .el-carousel__item:nth-child(2n + 1) {
+    background-color: #d3dce6;
+  }
 }
 </style>

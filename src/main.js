@@ -6,8 +6,10 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
-// import 'lib-flexible'
-import './assets/flexible'
+import echarts from "echarts"
+
+Vue.prototype.$echarts = echarts
+import './assets/js/flexible'
 Vue.config.productionTip = false
 
 new Vue({

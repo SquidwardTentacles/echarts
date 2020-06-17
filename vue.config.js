@@ -1,5 +1,6 @@
 // 在这里配置
 module.exports = {
+  productionSourceMap: false,
   // 基本路径
   publicPath: "./",
   // 输出文件目录
@@ -9,16 +10,4 @@ module.exports = {
     // port: 8888,
     // ...
   },
-  // css: {
-  //   loaderOptions: {
-  //     css: {},
-  //     postcss: {
-  //       plugins: [
-  //         require('postcss-px2rem')({
-  //           remUnit: 100
-  //         })
-  //       ]
-  //     }
-  //   }
-  // }
 }
