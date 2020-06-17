@@ -1,37 +1,39 @@
 <template>
   <div class="bannerf flexbox between">
     <div class="left">
-      <div class="zhu" id="zhu"></div>
-      <div class="zhu" id="line"></div>
+      <div class="zhu"
+           id="zhu"></div>
+      <div class="zhu"
+           id="line"></div>
     </div>
     <div class="center">center</div>
     <div class="right">right</div>
   </div>
 </template>
 <script>
-import echarts from "echarts/lib/echarts";
+import echarts from "echarts/lib/echarts"
 // 引入柱状图
-require('echarts/lib/chart/bar');
+require('echarts/lib/chart/bar')
 // 引入提示框和标题组件
-require('echarts/lib/component/tooltip');
-require('echarts/lib/component/title');
+require('echarts/lib/component/tooltip')
+require('echarts/lib/component/title')
 // 引入折线图
-require("echarts/lib/chart/line");
+require("echarts/lib/chart/line")
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
-  mounted() {
-    this.initialization();
+  mounted () {
+    this.initialization()
     this.lineWatch()
   },
   methods: {
     // 柱形图
-    initialization() {
+    initialization () {
       // 基于准备好的dom，初始化echarts实例
-      var myChart = echarts.init(document.getElementById("zhu"));
+      var myChart = echarts.init(document.getElementById("zhu"))
       // 绘制图表
-      let dataArr = ["衬衫", "羊毛", "雪纺", "裤子"];
+      let dataArr = ["衬衫", "羊毛", "雪纺", "裤子"]
       myChart.setOption({
         // 定义legend图标颜色
         color: ["#f24e06", "#f24e06", "#e2ff1f", "#069dee"],
@@ -42,16 +44,16 @@ export default {
           bottom: 20,
           // legend排列方向
           orient: "vertical",
-          textStyle:{
-            fontSize:10
+          textStyle: {
+            fontSize: 10
           },
-          itemWidth:10,
-          itemHeight:8
+          itemWidth: 10,
+          itemHeight: 8
         },
         grid: {
           left: "30%",
-          bottom:20,
-          show:false
+          bottom: 20,
+          show: false
         },
         title: {
           text: "ECharts 入门示例"
@@ -80,7 +82,7 @@ export default {
           splitLine: {
             show: false
           },
-           axisLine: {
+          axisLine: {
             lineStyle: {
               color: '#718faf'
             }
@@ -95,9 +97,9 @@ export default {
             barWidth: "40%",
             itemStyle: {
               normal: {
-                color: function(params) {
-                  var colorList = ["#f24e06", "#f24e06", "#e2ff1f", "#069dee"];
-                  return colorList[params.dataIndex];
+                color: function (params) {
+                  var colorList = ["#f24e06", "#f24e06", "#e2ff1f", "#069dee"]
+                  return colorList[params.dataIndex]
                 }
               }
             }
@@ -115,74 +117,74 @@ export default {
             type: "bar"
           }
         ]
-      });
-      window.addEventListener("resize", function() {
-        myChart.resize();
-      });
+      })
+      window.addEventListener("resize", function () {
+        myChart.resize()
+      })
     },
-// 折线图
-lineWatch() {
-let myChart = echarts.init(document.getElementById('line'))
-var option = {
-    xAxis: {
-        type: 'category',
-        boundaryGap: false
-    },
-    yAxis: {
-        type: 'value',
-        boundaryGap: [0, '30%']
-    },
-    visualMap: {
-        type: 'piecewise',
-        show: false,
-        dimension: 0,
-        seriesIndex: 0,
-        pieces: [{
+    // 折线图
+    lineWatch () {
+      let myChart = echarts.init(document.getElementById('line'))
+      var option = {
+        xAxis: {
+          type: 'category',
+          boundaryGap: false
+        },
+        yAxis: {
+          type: 'value',
+          boundaryGap: [0, '30%']
+        },
+        visualMap: {
+          type: 'piecewise',
+          show: false,
+          dimension: 0,
+          seriesIndex: 0,
+          pieces: [{
             gt: 1,
             lt: 3,
             color: 'rgba(0, 180, 0, 0.5)'
-        }, {
+          }, {
             gt: 5,
             lt: 7,
             color: 'rgba(0, 180, 0, 0.5)'
-        }]
-    },
-    series: [
-        {
+          }]
+        },
+        series: [
+          {
             type: 'line',
             smooth: 0.6,
             symbol: 'none',
             lineStyle: {
-                color: 'green',
-                width: 5
+              color: 'green',
+              width: 5
             },
             markLine: {
-                symbol: ['none', 'none'],
-                label: {show: false},
-                data: [
-                    {xAxis: 1},
-                    {xAxis: 3},
-                    {xAxis: 5},
-                    {xAxis: 7}
-                ]
+              symbol: ['none', 'none'],
+              label: { show: false },
+              data: [
+                { xAxis: 1 },
+                { xAxis: 3 },
+                { xAxis: 5 },
+                { xAxis: 7 }
+              ]
             },
             areaStyle: {},
             data: [
-                ['2019-10-10', 200],
-                ['2019-10-11', 400],
-                ['2019-10-12', 650],
-                ['2019-10-13', 500],
-                ['2019-10-14', 250],
-                ['2019-10-15', 300],
-                ['2019-10-16', 450],
-                ['2019-10-17', 300],
-                ['2019-10-18', 100]
+              ['2019-10-10', 200],
+              ['2019-10-11', 400],
+              ['2019-10-12', 650],
+              ['2019-10-13', 500],
+              ['2019-10-14', 250],
+              ['2019-10-15', 300],
+              ['2019-10-16', 450],
+              ['2019-10-17', 300],
+              ['2019-10-18', 100]
             ]
-        }
-    ]
-};
-myChart.setOption(option)
-}
+          }
+        ]
+      }
+      myChart.setOption(option)
+    }
   }
 };
 </script>
@@ -200,8 +202,8 @@ myChart.setOption(option)
   }
   .left {
     .zhu {
-      width: 1.5625rem;
-      height: 1.302083rem;
+      width: 6rem;
+      height: 6.25rem;
     }
   }
   .center {
