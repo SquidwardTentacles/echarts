@@ -10,6 +10,7 @@ export default {
     this.lineInit()
     this.barBox()
     this.circularPie()
+    this.lineEstimate()
   },
   methods: {
     barWatchInit () {
@@ -424,6 +425,57 @@ export default {
       window.addEventListener("resize", function () {
         echarts.resize()
       })
+    },
+    // 品种预产量
+    lineEstimate() {
+      let echarts = this.$echarts.init(document.getElementById('lineEstimate'))
+     var option = {
+       grid:{
+         bottom:20,
+         left:15,
+         top:15
+       },
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: '#e7e7eb'
+              }
+            },
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: '#e7e7eb'
+              }
+            },
+        },
+        series: [
+          {
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+        },
+          {
+            data: [705, 860, 640, 630, 750, 1000, 1120],
+            type: 'line',
+            smooth: true
+        },
+          {
+            data: [300, 132, 501, 334, 1090, 930, 600],
+            type: 'line',
+            smooth: true
+        }
+      ]
+    };
+    echarts.setOption(option)
+    window.addEventListener("resize", function () {
+      echarts.resize()
+    })
     }
   },
 }

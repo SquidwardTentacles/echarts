@@ -1,6 +1,6 @@
 <template>
   <div class="bannerf">
-    <div class="inner-box">
+    <div class="inner-box flexbox">
       <div class="header">
         <p>遵义产业大数据分析平台</p>
         <div class="right-swich">
@@ -9,15 +9,17 @@
         </div>
       </div>
       <div class="outer-box a-start flexbox between">
-        <div class=" edge-box left">
+        <div class="edge-box left flexbox between">
           <div class="box-sty total-description">
             <div class="title">
               <span>总量描述</span>
             </div>
             <ul>
-              <li v-for="(item,index) in totalDescription"
-                  :key="index"
-                  :class="{'active':(index+1)%2===0}">
+              <li
+                v-for="(item,index) in totalDescription"
+                :key="index"
+                :class="{'active':(index+1)%2===0}"
+              >
                 <span class="icon box1"></span>
                 <span class="icon box2"></span>
                 <span class="content">{{item.title}}</span>
@@ -25,34 +27,39 @@
               </li>
             </ul>
           </div>
-          <div class="box-sty machining ">
+          <div class="box-sty machining">
             <div class="title">
               <span>加工产品数量</span>
             </div>
-            <div class="bar-watch"
-                 id="barWatch"></div>
+            <div class="bar-watch" id="barWatch"></div>
           </div>
           <div class="bot-bar box-sty">
             <div class="title">
               <span>农事操作记录</span>
             </div>
-            <div class="bar-bot"
-                 id="barBot"></div>
+            <div class="bar-bot" id="barBot"></div>
           </div>
         </div>
         <div class="map-box">
-          <div class="map"></div>
-          <div class="sub-watch">
-            <div class="circular-pie">
-              <div class="title">
-                <span>育苗品种</span>
+          <div class="flexbox map-inner">
+            <div class="map"></div>
+            <div class="sub-watch flexbox between">
+              <div class="circular-pie">
+                <div class="title">
+                  <span>育苗品种</span>
+                </div>
+                <div class="pie" id="circularPie"></div>
               </div>
-              <div class="pie"
-                   id="circularPie"></div>
+              <div class="line-production">
+                <div class="title">
+                  <span>品种预产量</span>
+                </div>
+                <div class="line-estimate" id="lineEstimate"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="edge-box right">
+        <div class="edge-box right flexbox between">
           <div class="box-sty pie">
             <div class="title">
               <span>企业分类</span>
@@ -60,38 +67,49 @@
             <div class="progress flexbox between">
               <div class="progress-box">
                 <span class="num">130</span>
-                <el-progress type="circle"
-                             color="#ea342e"
-                             :percentage="25"
-                             :width="60"
-                             :show-text="false"></el-progress>
+                <el-progress
+                  type="circle"
+                  color="#ea342e"
+                  :percentage="75"
+                  :width="60"
+                  :show-text="false"
+                ></el-progress>
               </div>
               <div class="progress-box">
                 <span class="num">130</span>
-                <el-progress type="circle"
-                             :width="60"
-                             color="#eb702f"
-                             :percentage="25"
-                             :show-text="false"></el-progress>
+                <el-progress
+                  type="circle"
+                  :width="60"
+                  color="#eb702f"
+                  :percentage="25"
+                  :show-text="false"
+                ></el-progress>
               </div>
               <div class="progress-box">
                 <span class="num">130</span>
-                <el-progress type="circle"
-                             color="#f2b348"
-                             :width="60"
-                             :percentage="25"
-                             :show-text="false"></el-progress>
+                <el-progress
+                  type="circle"
+                  color="#f2b348"
+                  :width="60"
+                  :percentage="25"
+                  :show-text="false"
+                ></el-progress>
               </div>
               <div class="progress-box">
                 <span class="num">130</span>
-                <el-progress type="circle"
-                             color="#00ada2"
-                             :width="60"
-                             :percentage="25"
-                             :show-text="false"></el-progress>
+                <el-progress
+                  type="circle"
+                  color="#00ada2"
+                  :width="60"
+                  :percentage="25"
+                  :show-text="false"
+                ></el-progress>
               </div>
             </div>
-            <p class="total">企业总数：<span>2013</span></p>
+            <p class="total">
+              企业总数：
+              <span>2013</span>
+            </p>
           </div>
           <div class="box-sty base">
             <div class="outer flexbox between">
@@ -106,15 +124,13 @@
             </div>
           </div>
           <div class="box-sty line-outer">
-            <div class="line"
-                 id="line"></div>
+            <div class="line" id="line"></div>
           </div>
           <div class="box-sty tran-bar">
             <div class="title">
               <span>鲜椒产品</span>
             </div>
-            <div class="bar-box"
-                 id="barBox"></div>
+            <div class="bar-box" id="barBox"></div>
           </div>
         </div>
       </div>
@@ -124,10 +140,10 @@
 </template>
 <script>
 // import mapMixin from '../../assets/mixin/map'
-import productionEch from "../../assets/mixin/production"
+import productionEch from "../../assets/mixin/production";
 export default {
   mixins: [productionEch],
-  data () {
+  data() {
     return {
       totalDescription: [
         { title: "育苗品种个数", num: 111 },
@@ -141,9 +157,9 @@ export default {
         { title: "加工成品总数量", num: 111 },
         { title: "客商总数量", num: 111 }
       ]
-    }
+    };
   },
-  mounted () { },
+  mounted() {},
   methods: {}
 };
 </script>
@@ -151,17 +167,18 @@ export default {
 .bannerf {
   align-items: flex-start;
   height: 100%;
-  background: url('../../assets/img/bgc.jpg') no-repeat center center;
+  background: url("../../assets/img/bgc.jpg") no-repeat center center;
   background-size: cover;
   .inner-box {
     height: 13.5rem;
     width: 24rem;
     box-sizing: border-box;
     padding: 0 0.125rem;
+    flex-direction: column;
   }
   .header {
     height: 0.8rem;
-    background: url('../../assets/img/header.png') no-repeat center center;
+    background: url("../../assets/img/header.png") no-repeat center center;
     background-size: cover;
     width: 100%;
     position: relative;
@@ -178,10 +195,10 @@ export default {
           border: 1px solid #3e537d;
           border-radius: 0.25rem;
           width: 1rem;
-          padding: 2px 5px;
+          padding:.025rem .0625rem;
           padding-left: 0.375rem;
           font-size: 0.225rem;
-          background: url('../../assets/img/icon-productibn.png') no-repeat left
+          background: url("../../assets/img/icon-productibn.png") no-repeat left
             center;
           background-size: 0.225rem 0.225rem;
           background-position: 0.1rem;
@@ -189,7 +206,7 @@ export default {
         &:nth-child(2) {
           width: 0.375rem;
           height: 0.375rem;
-          background: url('../../assets/img/icon-switch.png') no-repeat center
+          background: url("../../assets/img/icon-switch.png") no-repeat center
             center;
           background-size: cover;
           margin-left: 0.225rem;
@@ -205,12 +222,12 @@ export default {
     }
   }
   .outer-box {
-    height: calc(100vh - 1.25rem);
+    flex:1 ;
     .title {
-      margin-bottom: 10px;
+      margin-bottom: .125rem;
       text-align: right;
       width: 100%;
-      padding-right: 10px;
+      padding-right: .125rem;
       span {
         color: #80dbef;
       }
@@ -220,10 +237,9 @@ export default {
       height: 100%;
       box-sizing: border-box;
       padding: 0.0375rem 0.125rem;
+      flex-direction: column;
       .box-sty {
         width: 100%;
-        padding: 0.1875rem;
-        box-sizing: border-box;
         margin-bottom: 0.1875rem;
       }
 
@@ -232,39 +248,40 @@ export default {
           padding-top: 0.0625rem;
           padding-bottom: 0.25rem;
           padding-bottom: 0.25rem;
-          background: url('../../assets/img/1.png') no-repeat center center;
+          background: url("../../assets/img/1.png") no-repeat center center;
           background-size: 100% 98%;
           ul {
             margin-top: 0.2rem;
             width: 100%;
             li {
               width: 75%;
+              font-size: .175rem;
               white-space: nowrap;
               margin: 0 auto;
               border-top: 1px solid #0c4a80;
               &:nth-last-child(1) {
                 border-bottom: 1px solid #0c4a80;
                 &:before {
-                  content: '';
+                  content: "";
                   display: block;
-                  width: 2px;
-                  height: 2px;
-                  border: 2px solid #08669f;
+                  width: .025rem;
+                  height: .025rem;
+                  border: .025rem solid #08669f;
                   background: rgb(15, 47, 94);
                   position: absolute;
-                  bottom: -3px;
-                  left: -2px;
+                  bottom: -0.0375rem;
+                  left: -0.025rem;
                 }
                 &:after {
-                  content: '';
+                  content: "";
                   display: block;
-                  width: 2px;
-                  height: 2px;
-                  border: 2px solid #08669f;
+                  width:.025rem;
+                  height:.025rem;
+                  border:.025rem solid #08669f;
                   background: rgb(15, 47, 94);
                   position: absolute;
-                  bottom: -3px;
-                  right: -2px;
+                  bottom: -0.0375rem;
+                  right: -0.025rem;
                 }
               }
               position: relative;
@@ -274,17 +291,17 @@ export default {
               }
               span.icon {
                 display: inline-block;
-                width: 2px;
-                height: 2px;
+                width: .025rem;
+                height: .025rem;
                 background-color: #0e2d5c;
-                border: 2px solid #08669f;
+                border: .025rem solid #08669f;
                 position: absolute;
-                top: -3px;
+                top: -0.0375rem;
                 &.box1 {
-                  left: -2px;
+                  left: -.025rem;
                 }
                 &.box2 {
-                  right: -2px;
+                  right: -.025rem;
                 }
               }
               .content {
@@ -297,7 +314,7 @@ export default {
 
                 &:nth-child(3) {
                   color: #c4cacb;
-                  padding: 2px 0 2px 10px;
+                  padding: .025rem 0 .025rem 10px;
                   border-right: 1px solid #0c4a80;
                   text-align: left;
                 }
@@ -307,8 +324,9 @@ export default {
         }
 
         .machining {
-          background: url('../../assets/img/2.png') no-repeat center center;
+          background: url("../../assets/img/2.png") no-repeat center center;
           background-size: cover;
+          height: 3rem;
           .title {
             padding-top: 0.1625rem;
             box-sizing: border-box;
@@ -319,8 +337,9 @@ export default {
           }
         }
         .bot-bar {
-          background: url('../../assets/img/3.png') no-repeat center;
+          background: url("../../assets/img/3.png") no-repeat center;
           background-size: cover;
+          height: 3.25rem;
           .bar-bot {
             width: 4.75rem;
             height: 2.5625rem;
@@ -336,7 +355,7 @@ export default {
           margin-bottom: 0.1rem;
         }
         .pie {
-          background: url('../../assets/img/9.png') no-repeat center center;
+          background: url("../../assets/img/9.png") no-repeat center center;
           background-size: 100% 98%;
           padding-bottom: 0.125rem;
           padding-top: 0;
@@ -354,7 +373,7 @@ export default {
                 color: #dde4e7;
                 font-size: 20px;
               }
-              // margin-right: 3px;
+              // margin-right: -0.0375rem;
             }
           }
           .total {
@@ -375,7 +394,7 @@ export default {
               .img {
                 width: 2rem;
                 height: 1.5rem;
-                background: url('../../assets/img/no-img.jpg') no-repeat center
+                background: url("../../assets/img/no-img.jpg") no-repeat center
                   center;
                 background-size: 100% 100%;
               }
@@ -383,7 +402,7 @@ export default {
           }
         }
         .line-outer {
-          background: url('../../assets/img/7.png') no-repeat center center;
+          background: url("../../assets/img/7.png") no-repeat center center;
           background-size: cover;
           padding-top: 0.3rem;
           .line {
@@ -392,9 +411,15 @@ export default {
           }
         }
         .tran-bar {
-          background: url('../../assets/img/3.png') no-repeat center center;
+          background: url("../../assets/img/3.png") no-repeat center center;
           background-size: 100% 98%;
           padding-top: 0.125rem;
+          height:3.225rem;
+          .title {
+            padding-left:.125rem ;
+            padding-top: .125rem;
+            box-sizing: border-box;
+          }
           .bar-box {
             width: 5.0625rem;
             height: 2.3rem;
@@ -404,26 +429,52 @@ export default {
     }
     .map-box {
       width: 12.5rem;
-      .map {
-        height: 7.8125rem;
-        width: 10.3125rem;
-      }
-      .sub-watch {
-        height: 3.4rem;
-        width: 100%;
-        .circular-pie {
-          width: 5.4375rem;
-          height: 3.275rem;
-          background: url('../../assets/img/4.png') no-repeat center center;
-          background-size: 100% 98%;
-          .title {
-            padding-top: 0.1875rem;
-            padding-right: 0.625rem;
-            box-sizing: border-box;
+      height: 100%;
+      .map-inner {
+        flex-direction: column;
+        justify-content: space-between;
+        height:100% ; 
+        .map {
+          width: 100%;
+          flex:1 ;
+        }
+        .sub-watch {
+          height: 3.125rem;
+          width: 100%;
+          margin-bottom: 0.1875rem;
+          padding:0 0.5rem ;
+          box-sizing: border-box;
+          .circular-pie {
+            width: 5.4375rem;
+            height: 3.175rem;
+            background: url("../../assets/img/4.png") no-repeat center center;
+            background-size: 100% 98%;
+            .title {
+              padding-top: 0.1875rem;
+              padding-right: 0.8rem;
+              box-sizing: border-box;
+            }
+            .pie {
+              width: 4.8375rem;
+              height: 2.5rem;
+            }
           }
-          .pie {
-            width: 4.8375rem;
-            height: 2.5rem;
+          .line-production {
+            width:5.55rem ;
+            height:3.225rem ;
+            background:url('../../assets/img/5.png') no-repeat center center ;
+            background-size: cover;
+            .title {
+              text-align: left;
+              padding-left: .6rem;
+              padding-top: .25rem;
+            }
+            .line-estimate {
+              width:4.7125rem ;
+              height:2rem ;
+              margin:0 auto ;
+              padding-top: .0625rem;
+            }
           }
         }
       }
