@@ -54,7 +54,6 @@ export default {
 </script>
 <style lang="less">
 .home {
-  min-height: 100%;
   background: url('../assets/img/bgc.jpg') no-repeat center center;
   background-size: 100% 100%;
   .header {
