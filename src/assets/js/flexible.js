@@ -1,4 +1,5 @@
 (function flexible (window, document) {
+  let width = document.documentElement.clientWidth
   var docEl = document.documentElement
   var dpr = window.devicePixelRatio || 1
 
@@ -14,7 +15,13 @@
 
   // set 1rem = viewWidth / 10
   function setRemUnit () {
-    var rem = docEl.clientWidth / 24
+    let setWidth = width
+    if (width > 1920) {
+      setWidth = 1920
+    } else if (width < 1100) {
+      setWidth = 1100
+    }
+    var rem = setWidth / 24
     docEl.style.fontSize = rem + "px"
   }
 

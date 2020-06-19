@@ -5,7 +5,7 @@
       <p>遵义产业大数据分析平台</p>
       <div class="right-swich">
         <span>生产</span>
-        <span></span>
+        <span @click="nextClick"></span>
       </div>
     </div>
     <div class="content-box">
@@ -48,6 +48,11 @@ export default {
       this.$refs.carousel.setActiveItem(i)
       this.time = Date.now()
     },
+    nextClick () {
+
+      console.log('next', document.documentElement.clientWidth)
+
+    }
   },
 
 }
