@@ -17,9 +17,7 @@ html,
 #app {
   padding: 0;
   margin: 0;
-  height: 100%;
-  flex-direction: column;
-  justify-content: start;
+  min-height: 100% !important;
 }
 .flexbox {
   display: flex;

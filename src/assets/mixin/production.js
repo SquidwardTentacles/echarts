@@ -1,16 +1,23 @@
+// import '../../../node_modules/echarts/map/js/china.js'
+import '../js/mapJs/guangxi'
 export default {
   data () {
     return {
 
     }
   },
+  created () {
+
+  },
   mounted () {
+    this.mapjs()
     this.barWatchInit()
     this.barBot()
     this.lineInit()
     this.barBox()
     this.circularPie()
     this.lineEstimate()
+    this.ZunYiMap()
   },
   methods: {
     barWatchInit () {
@@ -327,7 +334,8 @@ export default {
     barBox () {
       let echarts = this.$echarts.init(document.getElementById('barBox'))
 
-      let option = {
+
+      var option = {
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -335,48 +343,99 @@ export default {
           }
         },
         legend: {
-          data: ['2011年', '2012年'],
-          textStyle: {
-            color: '#b6bfcb'
-          }
+          icon: 'rect',//长方形
+          data: ['计划劳务资源', "实际劳务资源"],
+          //align: 'left',
+          right: 10,//legend距离canvas右边的距离
+          //left: 20,
+          top: 0,//legend距离canvas上面的距离
+          textStyle: {//文字颜色
+            fontSize: 12,
+            color: '#F1F1F3'
+          },
+          itemWidth: 14,//图标宽
+          itemHeight: 10,//图标高
+          itemGap: 13,//间距
         },
         grid: {
-          left: '1%',
-          right: '5%',
-          top: 25,
+          left: 30,
+          top: 20,
+          right: '4%',
           bottom: '3%',
           containLabel: true
         },
-        xAxis: {
-          type: 'value',
-          boundaryGap: [0, 0.01],
-          show: false
-        },
-        yAxis: {
-          type: 'category',
-          data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)'],
+        xAxis: [{
           axisLine: {
-            show: false,
-            lineStyle: {
-              color: '#e7e7eb'
-            }
+            show: false
+          },
+          axisLabel: {
+            show: false
           },
           axisTick: {
             show: false
-          }
-        },
-        series: [
-          {
-            name: '2011年',
-            type: 'bar',
-            data: [18203, 23489, 29034, 104970, 131744, 630230]
           },
-          {
-            name: '2012年',
-            type: 'bar',
-            data: [19325, 23438, 31000, 121594, 134141, 681807]
+          splitLine: {
+            show: false
           }
-        ]
+        }],
+        yAxis: [{
+          type: 'category',
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: "rgba(219,225,255,1)",
+              margin: 15
+            },
+            // formatter: '{value} %'
+          },
+          axisTick: {
+            show: false,
+          },
+          axisLine: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          },
+          data: ['选项', '选项', '选项']
+        }],
+        series: [{
+          name: '计划劳务资源',
+          type: 'bar',
+          data: [38, 38, 42, 48],
+          barWidth: 10, //柱子宽度
+          barGap: .5, //柱子之间间距
+          itemStyle: {
+            normal: {//vue中this.$echarts  jquery用echarts 
+              color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: '#96082e'
+              }, {
+                offset: 1,
+                color: '#f65066'
+              }]),
+              opacity: 1,
+            }
+          }
+        }, {
+          name: '实际劳务资源',
+          type: 'bar',
+          data: [40, 30, 42, 50],
+          barWidth: 10,
+          barGap: .5,
+          itemStyle: {
+            normal: {//vue中this.$echarts  jquery用echarts 
+              color: new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: '#0665e5'
+              }, {
+                offset: 1,
+                color: '#11abdf'
+              }]),
+              opacity: 1,
+            }
+          }
+        }]
       }
 
 
@@ -394,22 +453,32 @@ export default {
           formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
         legend: {
+          type: 'scroll',
           orient: 'vertical',
           x: 'right',
           y: 'bottom',
-          data: ['在线', '离线']
+          textStyle: {
+            color: '#fefeff',
+            fontSize: 12
+          },
+          align: 'left',
+          itemWidth: 15,
+          top: 30
         },
         series:
         {
 
           name: '访问来源',
           type: 'pie',
-          radius: ['50%', '70%'],
+          radius: ['30%', '50%'],
           avoidLabelOverlap: false,
-          center: ['40%', '50%'],
+          center: ['35%', '50%'],
 
           labelLine: {
             show: true
+          },
+          label: {
+            formatter: '{d}%'
           },
           data: [
             { value: 335, name: '直接访问' },
@@ -427,55 +496,510 @@ export default {
       })
     },
     // 品种预产量
-    lineEstimate() {
+    lineEstimate () {
       let echarts = this.$echarts.init(document.getElementById('lineEstimate'))
-     var option = {
-       grid:{
-         bottom:20,
-         left:15,
-         top:15
-       },
+      var option = {
+        grid: {
+          bottom: 20,
+          left: 50,
+          top: 15
+        },
         xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            axisLine: {
-              show: false,
-              lineStyle: {
-                color: '#e7e7eb'
-              }
-            },
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: '#073c70'
+            }
+          },
+          axisTick: {
+            show: false
+          }
         },
         yAxis: {
-            type: 'value',
-            axisLine: {
-              show: false,
-              lineStyle: {
-                color: '#e7e7eb'
-              }
-            },
+          type: 'value',
+          axisLine: {
+            show: false,
+            lineStyle: {
+              color: '#45749e'
+            }
+          },
+          splitLine: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          }
         },
         series: [
           {
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             type: 'line',
             smooth: true
-        },
+          },
           {
             data: [705, 860, 640, 630, 750, 1000, 1120],
             type: 'line',
             smooth: true
-        },
+          },
           {
             data: [300, 132, 501, 334, 1090, 930, 600],
             type: 'line',
             smooth: true
+          }
+        ]
+      }
+      echarts.setOption(option)
+      window.addEventListener("resize", function () {
+        echarts.resize()
+      })
+    },
+    // 遵义地图
+    ZunYiMap () {
+      let echarts = this.$echarts.init(document.getElementById('zunyiMap'))
+
+      //自定义城市坐标菜单
+      var geoCoordMap = {
+        "海门": [106.92, 27.73],
+        "桐梓县": [106.82, 28.13],
+        "招远": [120.38, 37.35],
+        "舟山": [122.207216, 29.985295],
+        "齐齐哈尔": [123.97, 47.33],
+        "盐城": [120.13, 33.38],
+        "赤峰": [118.87, 42.28],
+        "青岛": [120.33, 36.07],
+        "乳山": [121.52, 36.89],
+        "金昌": [102.188043, 38.520089],
+      }
+      //拼接对象数组
+      var convertData = function (data) {
+        var res = []
+        for (var i = 0; i < data.length; i++) {
+          var geoCoord = geoCoordMap[data[i].name] //获取坐标
+          if (geoCoord) { //如果有坐标
+            res.push({ //创建对象数组，
+              name: data[i].name,
+              value: geoCoord.concat(data[i].value) //用连接数组的形式将value值加入
+            })
+            //res.push(geoCoord.concat(data[i].value));
+            //res.push(geoCoord.concat(data[i].name));
+          }
         }
+        return res
+      }
+      var data = [{
+        name: "海门",
+        value: 9
+      },
+      {
+        name: "鄂尔多斯",
+        value: 12
+      },
+      {
+        name: "桐梓县",
+        value: 12
+      },
+      {
+        name: "舟山",
+        value: 12
+      },
+      {
+        name: "齐齐哈尔",
+        value: 14,
+      },
+      {
+        name: "盐城",
+        value: 15
+      },
+      {
+        name: "赤峰",
+        value: 100
+      },
+      {
+        name: "青岛",
+        value: 18
+      },
+      {
+        name: "乳山",
+        value: 300
+      },
+      {
+        name: "金昌",
+        value: 19
+      },
       ]
-    };
-    echarts.setOption(option)
-    window.addEventListener("resize", function () {
-      echarts.resize()
-    })
+
+      var max = 480,
+        min = 9
+      var maxSize4Pin = 50,
+        minSize4Pin = 20
+
+      echarts.setOption({
+        tooltip: {
+          trigger: 'item',
+          formatter: function loadData (result) {
+            return result.name + '<br />' + result.value[3]
+          }
+        },
+        grid: {
+          top: 20,
+          bottom: 50
+        },
+        geo: {
+          zoom: 1.2,
+          show: true,
+          map: '遵义',
+          mapType: '遵义',
+          label: {
+            normal: {
+              show: true,
+              textStyle: {
+                color: "#fff"
+              }
+            },
+            emphasis: {
+              show: true,
+              textStyle: {
+                color: '#fff'
+              }
+            },
+          },
+          roam: true,
+          itemStyle: {
+            normal: {
+              borderColor: 'rgba(65, 145, 214, 0.8)',
+              borderWidth: 2,
+              areaColor: {
+                type: 'radial',
+                x: 0.5,
+                y: 0.5,
+                r: 0.8,
+                colorStops: [{
+                  offset: 0,
+                  color: 'rgba(65, 145, 214, 0.8)' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: 'rgba(65, 145, 214, 0.8)' // 100% 处的颜色
+                }],
+                globalCoord: false // 缺省为 false
+              },
+              /*  shadowColor: 'rgba(128, 217, 248, 1)',*/
+              shadowOffsetX: -2,
+              shadowOffsetY: 2,
+              shadowBlur: 10
+            },
+            emphasis: {
+              areaColor: 'rgba(51, 133, 255, 1.0)',
+              borderWidth: 0
+            }
+          }
+        },
+        series: [{
+          name: '辣椒种植基地',
+          type: 'scatter',
+          coordinateSystem: 'geo',
+          symbolSize: function (val) {
+            var a = (maxSize4Pin - minSize4Pin) / (max - min)
+            var b = minSize4Pin - a * min
+            b = maxSize4Pin - a * max
+            return a * val[2] + b
+          },
+          label: {
+            normal: {
+              formatter: '{b}',
+              show: true,
+              textStyle: {
+                color: '#fff',
+                fontSize: 10,
+              }
+            }
+          },
+
+          itemStyle: {
+            normal: {
+              color: 'red', //标志颜色
+            },
+            emphasis: {
+              borderColor: '#fff',
+              borderWidth: 1
+            },
+            areaStyle: {
+              color: 'red',//默认的地图板块颜色
+            },
+          },
+
+          data: convertData(data),
+        },
+        {
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          data: convertData(data.sort(function (a, b) {
+            return b.value - a.value
+          }).slice(0, 47)),
+          symbolSize: function (val) {
+            return val[2] / 10
+          },
+          showEffectOn: 'render',
+          rippleEffect: {
+            brushType: 'stroke'
+          },
+          hoverAnimation: true,
+          itemStyle: {
+            normal: {
+              color: '#05C3F9',
+              shadowBlur: 10,
+              shadowColor: '#05C3F9'
+            }
+          },
+          zlevel: 1
+        }
+        ]
+      })
+      // 散点点击事件
+      echarts.on('click', function (params) {
+        if (params.value && params.value.length > 1) {
+          console.log(params)
+        }
+      })
+      window.addEventListener("resize", function () {
+        echarts.resize()
+      })
+    },
+    mapjs () {
+      // echart_map中国地图
+
+      var myChart = this.$echarts.init(document.getElementById('zunyiMap'))
+
+      function showProvince () {
+        //自定义城市坐标菜单
+        var geoCoordMap = {
+          "海门": [106.92, 27.73],
+          "桐梓县": [106.82, 28.13],
+          "招远": [120.38, 37.35],
+          "舟山": [122.207216, 29.985295],
+          "齐齐哈尔": [123.97, 47.33],
+          "盐城": [120.13, 33.38],
+          "赤峰": [118.87, 42.28],
+          "青岛": [120.33, 36.07],
+          "乳山": [121.52, 36.89],
+          "金昌": [102.188043, 38.520089],
+        }
+        //拼接对象数组
+        var convertData = function (data) {
+          var res = []
+          for (var i = 0; i < data.length; i++) {
+            var geoCoord = geoCoordMap[data[i].name] //获取坐标
+            if (geoCoord) { //如果有坐标
+              res.push({ //创建对象数组，
+                name: data[i].name,
+                value: geoCoord.concat(data[i].value) //用连接数组的形式将value值加入
+              })
+              //res.push(geoCoord.concat(data[i].value));
+              //res.push(geoCoord.concat(data[i].name));
+            }
+          }
+          return res
+        }
+        var data = [{
+          name: "海门",
+          value: 9
+        },
+        {
+          name: "鄂尔多斯",
+          value: 12
+        },
+        {
+          name: "桐梓县",
+          value: 12
+        },
+        {
+          name: "舟山",
+          value: 12
+        },
+        {
+          name: "齐齐哈尔",
+          value: 14,
+        },
+        {
+          name: "盐城",
+          value: 15
+        },
+        {
+          name: "赤峰",
+          value: 100
+        },
+        {
+          name: "青岛",
+          value: 18
+        },
+        {
+          name: "乳山",
+          value: 300
+        },
+        {
+          name: "金昌",
+          value: 19
+        },
+        ]
+
+        var max = 480,
+          min = 9
+        var maxSize4Pin = 50,
+          minSize4Pin = 20
+        // var convertData = function (data) {
+        //   var res = []
+        //   for (var i = 0; i < data.length; i++) {
+        //     var geoCoord = geoCoordMap[data[i].name]
+
+        //     if (geoCoord) {
+        //       res.push({
+        //         name: data[i].name,
+        //         value: geoCoord.concat(data[i].value),
+        //       })
+        //     }
+        //   }
+        //   return res
+        // }
+
+        myChart.setOption({
+          tooltip: {
+            trigger: 'item',
+            formatter: function loadData (result) {
+              return result.name + '<br />' + result.value[3]
+            }
+          },
+
+          geo: {
+            zoom: 1.2,
+            show: true,
+            map: '遵义',
+            mapType: '遵义',
+            label: {
+              normal: {
+                show: true,
+                textStyle: {
+                  color: "#fff"
+                }
+              },
+              emphasis: {
+                show: true,
+                textStyle: {
+                  color: '#fff'
+                }
+              },
+            },
+            roam: true,
+            itemStyle: {
+              normal: {
+                borderColor: 'rgba(65, 145, 214, 0.8)',
+                borderWidth: 2,
+                areaColor: {
+
+                  type: 'radial',
+                  x: 0.5,
+                  y: 0.5,
+                  r: 0.8,
+                  colorStops: [{
+                    offset: 0,
+                    color: 'rgba(65, 145, 214, 0.8)' // 0% 处的颜色
+                  }, {
+                    offset: 1,
+                    color: 'rgba(65, 145, 214, 0.8)' // 100% 处的颜色
+                  }],
+                  globalCoord: false // 缺省为 false
+                },
+                /*  shadowColor: 'rgba(128, 217, 248, 1)',*/
+                shadowOffsetX: -2,
+                shadowOffsetY: 2,
+                shadowBlur: 10
+              },
+              emphasis: {
+                areaColor: 'rgba(51, 133, 255, 1.0)',
+                borderWidth: 0
+              }
+            }
+          },
+          // legend: {
+          //   show: true,
+          //   data: ['辣椒种植基地'],
+          //   left: 'left',
+          //   bottom: 50,
+          //   textStyle: {
+          //     color: '#f8fbff'
+          //   },
+          // },
+          series: [
+            {
+              name: '辣椒种植基地',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              symbolSize: function (val) {
+                var a = (maxSize4Pin - minSize4Pin) / (max - min)
+                var b = minSize4Pin - a * min
+                b = maxSize4Pin - a * max
+                return a * val[2] + b
+              },
+              label: {
+                normal: {
+                  formatter: '{b}',
+                  show: true,
+                  textStyle: {
+                    color: '#fff',
+                    fontSize: 10,
+                  }
+                }
+              },
+
+              itemStyle: {
+                normal: {
+                  color: 'red', //标志颜色
+                },
+                emphasis: {
+                  borderColor: '#fff',
+                  borderWidth: 1
+                }
+              },
+
+              data: convertData(data),
+            },
+            {
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              data: convertData(data.sort(function (a, b) {
+                return b.value - a.value
+              }).slice(0, 47)),
+              symbolSize: function (val) {
+                return val[2] / 10
+              },
+              showEffectOn: 'render',
+              rippleEffect: {
+                brushType: 'stroke'
+              },
+              hoverAnimation: true,
+              itemStyle: {
+                normal: {
+                  color: '#05C3F9',
+                  shadowBlur: 10,
+                  shadowColor: '#05C3F9'
+                }
+              },
+              zlevel: 1
+            }
+          ]
+        })
+        // 散点点击事件
+        myChart.on('click', function (params) {
+          if (params.value && params.value.length > 1) {
+            console.log(params)
+          }
+        })
+      }
+      showProvince()
+      window.addEventListener("resize", function () {
+        myChart.resize()
+      })
+
     }
   },
 }

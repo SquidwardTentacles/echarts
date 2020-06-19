@@ -33,7 +33,11 @@
     </div>
     <div class="map-box">
       <div class="flexbox map-inner">
-        <div class="map"></div>
+        <div class="map">
+          <div class="legend"></div>
+          <div class="zunyi-map"
+               id="zunyiMap"></div>
+        </div>
         <div class="sub-watch flexbox between">
           <div class="circular-pie">
             <div class="title">
@@ -288,6 +292,7 @@ export default {
         padding-bottom: 0.125rem;
         padding-top: 0;
         max-height: 2.1875rem;
+
         .progress {
           padding: 0 5px;
           overflow: hidden;
@@ -365,6 +370,12 @@ export default {
       .map {
         width: 100%;
         flex: 1;
+        overflow: hidden;
+        .zunyi-map {
+          margin: 0 auto;
+          width: 10.75rem;
+          height: calc(100vh - 4.125rem);
+        }
       }
       .sub-watch {
         height: 3.125rem;
@@ -378,13 +389,14 @@ export default {
           background: url('../../assets/img/4.png') no-repeat center center;
           background-size: 100% 98%;
           .title {
-            padding-top: 0.1875rem;
-            padding-right: 0.8rem;
+            padding-top: 0.25rem;
+            padding-right: 0.9rem;
             box-sizing: border-box;
           }
           .pie {
             width: 4.8375rem;
             height: 2.5rem;
+            margin: 0 auto;
           }
         }
         .line-production {

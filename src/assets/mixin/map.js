@@ -7,7 +7,7 @@ export default {
 
   },
   mounted () {
-    this.mapInitialization()
+    // this.mapInitialization()
   },
   methods: {
     mapInitialization () {
