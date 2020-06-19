@@ -1,7 +1,18 @@
 <template>
-  <div class="about"
+  <div class="home"
        id="div">
-    <el-carousel ref="carousel"
+    <div class="header">
+      <p>遵义产业大数据分析平台</p>
+      <div class="right-swich">
+        <span>生产</span>
+        <span></span>
+      </div>
+    </div>
+    <div class="content-box">
+      <router-view></router-view>
+
+    </div>
+    <!-- <el-carousel ref="carousel"
                  :loop="false"
                  :autoplay="false">
       <el-carousel-item>
@@ -10,17 +21,17 @@
       <el-carousel-item>
         <bannert></bannert>
       </el-carousel-item>
-    </el-carousel>
+    </el-carousel> -->
   </div>
 </template>
 <script>
-import production from '../components/comp-view/production'
-import bannert from '../components/comp-view/bannert'
+// import production from '../components/comp-view/production'
+// import bannert from '../components/comp-view/bannert'
 export default {
-  components: {
-    production,
-    bannert
-  },
+  // components: {
+  //   production,
+  //   bannert
+  // },
   data () {
     return {
       acctive: 0,
@@ -30,72 +41,71 @@ export default {
   mounted () {
     this.imgHeight =
       document.documentElement.clientHeight || document.body.clientHeight
-    window.addEventListener("mousewheel", this.handleScroll, false)
+
   },
   methods: {
-    handleScroll (e) {
-      if (this.time) {
-        return
-      }
-      // 设置一秒内只能执行一次
-      this.time = setTimeout(() => {
-        clearTimeout(this.time)
-        this.time = ""
-      }, 1000)
-
-      var direction = e.deltaY > 0 ? "down" : "up" //该语句可以用来判断滚轮是向上滑动还是向下
-      if (direction === "down") {
-        if (this.acctive >= 2) {
-          return
-        }
-        this.acctive++
-      } else {
-        if (this.acctive <= 0) {
-          return
-        }
-        this.acctive--
-      }
-      // 调用方法改变轮播图位置
-      this.setActiveItem(this.acctive)
-    },
     setActiveItem (i) {
       this.$refs.carousel.setActiveItem(i)
       this.time = Date.now()
     },
   },
-  destroyed () {
-    window.removeEventListener("scroll", this.handleScroll) //  离开页面清除（移除）滚轮滚动事件
-  },
+
 }
 </script>
 <style lang="less">
-.about {
-  height: 100%;
-  .el-carousel {
+.home {
+  min-height: 100%;
+  background: url('../assets/img/bgc.jpg') no-repeat center center;
+  background-size: 100% 100%;
+  .header {
+    height: 0.8rem;
+    background: url('../assets/img/header.png') no-repeat center center;
+    background-size: cover;
     width: 100%;
-    height: 100%;
-    .el-carousel__container {
-      height: 100%;
+    position: relative;
+    .right-swich {
+      position: absolute;
+      right: 0.625rem;
+      top: 50%;
+      color: #adccd7;
+      transform: translateX(-50%);
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        &:nth-child(1) {
+          border: 1px solid #3e537d;
+          border-radius: 0.25rem;
+          width: 1rem;
+          padding: 0.025rem 0.0625rem;
+          padding-left: 0.375rem;
+          font-size: 0.225rem;
+          background: url('../assets/img/icon-productibn.png') no-repeat left
+            center;
+          background-size: 0.225rem 0.225rem;
+          background-position: 0.1rem;
+        }
+        &:nth-child(2) {
+          width: 0.375rem;
+          height: 0.375rem;
+          background: url('../assets/img/icon-switch.png') no-repeat center
+            center;
+          background-size: cover;
+          margin-left: 0.225rem;
+          cursor: pointer;
+        }
+      }
     }
-    // .el-carousel__indicators.el-carousel__indicators--vertical {
-    //   width: 100%;
-    //   height: 100%;
-    // }
+    p {
+      text-align: center;
+      color: #e9ecf1;
+      font-size: 0.45rem;
+      padding-top: 0.125rem;
+    }
   }
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n + 1) {
-    background-color: #d3dce6;
+  .content-box {
+    max-height: 13.5rem;
+    min-height: calc(100vh - 1rem);
+    width: 24rem;
   }
 }
 </style>
