@@ -9,29 +9,15 @@
       </div>
     </div>
     <div class="content-box">
+      <keep-alive>
       <router-view></router-view>
+      </keep-alive>
 
     </div>
-    <!-- <el-carousel ref="carousel"
-                 :loop="false"
-                 :autoplay="false">
-      <el-carousel-item>
-        <production></production>
-      </el-carousel-item>
-      <el-carousel-item>
-        <bannert></bannert>
-      </el-carousel-item>
-    </el-carousel> -->
   </div>
 </template>
 <script>
-// import production from '../components/comp-view/production'
-// import bannert from '../components/comp-view/bannert'
 export default {
-  // components: {
-  //   production,
-  //   bannert
-  // },
   data () {
     return {
       acctive: 0,
@@ -49,8 +35,19 @@ export default {
       this.time = Date.now()
     },
     nextClick () {
-
-      console.log('next', document.documentElement.clientWidth)
+      let routerArr = this.$router.options.routes[0].children
+      let currentPath = this.$router.currentRoute.path
+      routerArr.map((item,i)=>{
+       if(item.path===currentPath) {
+         let nextPathI = ''
+         nextPathI = (i+1)===routerArr.length?0:i+1
+         this.$router.push({
+           path:routerArr[nextPathI].path
+         })
+         return
+       }
+      })
+      
 
     }
   },
@@ -62,11 +59,12 @@ export default {
   background: url('../assets/img/bgc.jpg') no-repeat center center;
   background-size: 100% 100%;
   .header {
-    height: 0.8rem;
+    height: 0.7rem;
     background: url('../assets/img/header.png') no-repeat center center;
     background-size: cover;
     width: 100%;
     position: relative;
+    margin-bottom: .375rem;
     .right-swich {
       position: absolute;
       right: 0.625rem;
@@ -102,14 +100,16 @@ export default {
     p {
       text-align: center;
       color: #e9ecf1;
-      font-size: 0.45rem;
-      padding-top: 0.125rem;
+      font-size: 0.4rem;
+      padding-top: 0.08rem;
     }
   }
   .content-box {
     max-height: 13.5rem;
-    min-height: calc(100vh - 1rem);
+    min-height: calc(100vh - 1.3rem);
     width: 24rem;
+    padding:0 .8125rem;
+    box-sizing: border-box;
   }
 }
 </style>

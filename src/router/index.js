@@ -15,6 +15,11 @@ const routes = [
         name: 'production',
         component: () => import(/* webpackChunkName: "production" */ '../views/watchView/production.vue')
       },
+      {
+        path: '/home/internetThings',
+        name: 'internetThigs',
+        component: () => import(/* webpackChunkName: "internetThigs" */ '../views/watchView/internetOfThings.vue')
+      },
     ]
   },
   {

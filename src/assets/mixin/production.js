@@ -500,9 +500,9 @@ export default {
       let echarts = this.$echarts.init(document.getElementById('lineEstimate'))
       var option = {
         grid: {
-          bottom: 20,
+          bottom: 35,
           left: 50,
-          top: 15
+          top: 10
         },
         xAxis: {
           type: 'category',
@@ -868,7 +868,7 @@ export default {
             formatter: function loadData (result) {
               return result.name + '<br />' + result.value[3]
             }
-          },
+          }, 
 
           geo: {
             zoom: 1.2,
@@ -920,13 +920,22 @@ export default {
               }
             }
           },
+          grid:{
+            left:10,
+            top:10,
+            right:10
+          },
           // legend: {
+          //   icon:'none',
           //   show: true,
           //   data: ['辣椒种植基地'],
           //   left: 'left',
           //   bottom: 50,
           //   textStyle: {
-          //     color: '#f8fbff'
+          //     color: '#f8fbff',
+          //     backgroundColor : require('../../assets/img/14.png'),
+          //     width:100,
+          //     height:50
           //   },
           // },
           series: [
