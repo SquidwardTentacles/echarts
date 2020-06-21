@@ -69,7 +69,7 @@ export default {
   .header {
     height: 0.7rem;
     background: url("../assets/img/header.png") no-repeat center center;
-    background-size: cover;
+    background-size: 100% 98%;
     min-width: 100%;
     position: relative;
     margin-bottom: 0.375rem;
@@ -108,22 +108,24 @@ export default {
     p {
       text-align: center;
       color: #e9ecf1;
-      font-size: 0.4rem;
-      padding-top: 0.08rem;
+      font-size: 0.3rem;
+      line-height: 0.7rem;
     }
   }
   .content-box {
-    min-height: calc(100vh - 1.3rem);
+    min-height: calc(100vh - 1.1rem);
+    max-height: 13.5rem;
     width: 100%;
-    overflow-y: auto;
+    overflow: auto;
     padding: 0 0.8125rem;
+    padding-bottom: 0.25rem;
     box-sizing: border-box;
   }
 }
 
 .map-watch-zunyi {
-  min-height: calc(100vh - 1.3rem);
-  // align-items: flex-start;
+  // min-height: calc(100vh - 1.3rem);
+  
   .title {
     margin-bottom: 0.125rem;
     text-align: left;
@@ -148,94 +150,15 @@ export default {
       background-size: 100% 98%;
       width: 5.275rem;
       box-sizing: border-box;
-      ul {
-        margin-top: 0.2rem;
-        width: 100%;
-        li {
-          width: 75%;
-          font-size: 0.175rem;
-          white-space: nowrap;
-          margin: 0 auto;
-          border-top: 1px solid #0c4a80;
-          &:nth-last-child(1) {
-            border-bottom: 1px solid #0c4a80;
-            &:before {
-              content: "";
-              display: block;
-              width: 0.025rem;
-              height: 0.025rem;
-              border: 0.025rem solid #08669f;
-              background: rgb(15, 47, 94);
-              position: absolute;
-              bottom: -0.0375rem;
-              left: -0.025rem;
-            }
-            &:after {
-              content: "";
-              display: block;
-              width: 0.025rem;
-              height: 0.025rem;
-              border: 0.025rem solid #08669f;
-              background: rgb(15, 47, 94);
-              position: absolute;
-              bottom: -0.0375rem;
-              right: -0.025rem;
-            }
-          }
-          position: relative;
-          background-color: #0f376b;
-          &.active {
-            background-color: rgb(17, 46, 93);
-          }
-          span.icon {
-            display: inline-block;
-            width: 0.025rem;
-            height: 0.025rem;
-            background-color: #0e2d5c;
-            border: 0.025rem solid #08669f;
-            position: absolute;
-            top: -0.0375rem;
-            &.box1 {
-              left: -0.025rem;
-            }
-            &.box2 {
-              right: -0.025rem;
-            }
-          }
-          .content {
-            display: inline-block;
-            width: 50%;
-            text-align: center;
-            box-sizing: border-box;
-            color: #bcc637;
-            text-decoration: underline;
-
-            &:nth-child(3) {
-              color: #c4cacb;
-              padding: 0.025rem 0 0.025rem 10px;
-              border-right: 1px solid #0c4a80;
-              text-align: left;
-            }
-          }
-        }
-      }
     }
 
     .machining {
       background: url("~@/assets/img/2.png") no-repeat center center;
       background-size: cover;
-      // height: 2.975rem;
+      min-height: 2.975rem;
       padding: 0.2rem;
       width: 5.275rem;
       box-sizing: border-box;
-      .title {
-        padding-top: 0.1625rem;
-        box-sizing: border-box;
-      }
-      .bar-watch {
-        width: 4.675rem;
-        height: 2.4875rem;
-      }
     }
     &.left {
       .title {
@@ -249,36 +172,14 @@ export default {
     .pie {
       background: url("~@/assets/img/9.png") no-repeat center center;
       background-size: 100% 98%;
-      padding: 0.2rem;
-      max-height: 2rem;
-      width: 5rem;
+      padding: 0.2rem 0.2rem;
+      min-width: 5.275rem;
       box-sizing: border-box;
-      .progress {
-        padding: 0 5px;
-        overflow: hidden;
-        .progress-box {
-          position: relative;
-          .num {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            color: #dde4e7;
-            font-size: 20px;
-          }
-          // margin-right: -0.0375rem;
-        }
-      }
-      .total {
-        color: #74d1e6;
-        span {
-          color: #f4f4f9;
-        }
-      }
+      flex-direction: column;
     }
     .base {
-      padding: 0.2rem;
-      width: 5rem;
+      padding: 0.2rem 0;
+      min-width: 5.275rem;
       box-sizing: border-box;
       .outer {
         .content-i {
@@ -288,7 +189,7 @@ export default {
             margin: 0.125rem;
           }
           .img {
-            width: 2rem;
+            width: 100%;
             height: 1.5rem;
             background: url("~@/assets/img/no-img.jpg") no-repeat center center;
             background-size: 100% 100%;
@@ -299,8 +200,9 @@ export default {
     .line-outer {
       background: url("~@/assets/img/7.png") no-repeat center center;
       background-size: cover;
-      padding: 0.2rem;
-      width: 5rem;
+      padding: 0.2rem 0;
+      min-width: 5.275rem;
+      min-height: 3.225rem;
       box-sizing: border-box;
       .line {
         width: 4.75rem;
@@ -311,76 +213,6 @@ export default {
   .map-box {
     width: 11rem;
     min-height: 100%;
-
-    .map {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      justify-content: center;
-      .zunyi-map {
-        width: 8.3rem;
-        height: 8.15rem;
-      }
-      .legend-box {
-        width: 2.275rem;
-        height: 100%;
-        padding-top: 0.725rem;
-        box-sizing: border-box;
-        .legend-icon {
-          flex-direction: column;
-          height: 75%;
-          .icon {
-            height: 0.4625rem;
-            line-height: 0.4625rem;
-            margin-top: 0.5rem;
-            width: 100%;
-            background: url("~@/assets/img/14.png") no-repeat center center;
-            background-size: 2.275rem 0.45rem;
-            span {
-              vertical-align: middle;
-              color: #fff;
-              font-size: 0.175rem;
-              &:nth-child(1) {
-                display: inline-block;
-                margin-right: 0.125rem;
-                width: 0.1875rem;
-                height: 0.1875rem;
-                border-radius: 50%;
-                background-color: #fffc00;
-              }
-            }
-          }
-        }
-        .search-box {
-          width: 2.625rem;
-          height: 0.25rem;
-          vertical-align: middle;
-          margin-bottom: 1.5rem;
-          input {
-            width: 2.075rem;
-            height: 0.2625rem;
-            background-color: #7883a1;
-            border: none;
-            border: 0.0125rem solid #fff;
-            border-left: none;
-            box-sizing: border-box;
-          }
-          span {
-            height: 0.2625rem;
-            width: 0.5375rem;
-            background: #23b6fb url("~@/assets/img/search-icon.svg") no-repeat
-              center center;
-            background-size: 0.1875rem 0.1875rem;
-          }
-        }
-      }
-    }
-    .sub-watch {
-      height: 3rem;
-      width: 100%;
-      margin-bottom: 0.1875rem;
-      justify-content: space-around;
-    }
   }
   .bot-box {
     .inner {
@@ -388,67 +220,43 @@ export default {
         text-align: right;
       }
       .bot-bar {
-        padding: 0.2rem;
+        padding: 0.2rem 0;
+        box-sizing: border-box;
         background: url("~@/assets/img/3.png") no-repeat center;
         background-size: cover;
-        // height: 2.8rem;
-        box-sizing: border-box;
-        width: 5.275rem;
-        .bar-bot {
-          width: 4.675rem;
-          height: 2.4875rem;
-        }
+        min-width: 5.275rem;
+        min-height: 3.225rem;
+        margin-right: 0.2rem;
       }
 
       .circular-pie {
-        padding: 0 0.4375rem;
+        padding: 0.2rem 0;
+        box-sizing: border-box;
+        margin-right: 0.2rem;
         background: url("~@/assets/img/4.png") no-repeat center center;
         background-size: 100% 98%;
-        .title {
-          padding-top: 0.25rem;
-          padding-right: 0.5rem;
-          box-sizing: border-box;
-        }
-        .pie {
-          width: 4.425rem;
-          height: 2.5rem;
-          margin: 0 auto;
-        }
+        min-width: 5.275rem;
+        min-height: 3.225rem;
+        margin-right: 0.2rem;
       }
 
       .line-production {
-        padding: 0 0.4375rem;
+        padding: 0.2rem 0;
+        margin-right: 0.2rem;
+        min-width: 5.275rem;
+        box-sizing: border-box;
+        min-height: 3.225rem;
         background: url("~@/assets/img/5.png") no-repeat center center;
-        background-size: cover;
-        .title {
-          text-align: left;
-          padding-left: 0.2rem;
-          padding-top: 0.25rem;
-          box-sizing: border-box;
-        }
-        .line-estimate {
-          width: 4.425rem;
-          height: 2.4rem;
-          margin: 0 auto;
-        }
+        background-size: 100% 98%;
       }
 
       .tran-bar {
         background: url("~@/assets/img/3.png") no-repeat center center;
         background-size: 100% 98%;
-        padding: 0.2rem;
-        min-height: 2.8rem;
+        padding: 0.2rem 0;
+        min-width: 5.275rem;
+        min-height: 3.225rem;
         box-sizing: border-box;
-        width: 5rem;
-        .title {
-          padding-left: 0.125rem;
-          padding-top: 0.125rem;
-          box-sizing: border-box;
-        }
-        .bar-box {
-          width: 4.7rem;
-          height: 2.3rem;
-        }
       }
     }
   }
