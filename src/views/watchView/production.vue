@@ -387,9 +387,11 @@ export default {
           box-sizing: border-box;
         }
         .pie {
-          width: 4.675rem;
+          width: 5rem;
           height: 2.4875rem;
           margin: 0 auto;
+          padding-bottom: .3rem;
+          box-sizing: border-box;
         }
       }
 

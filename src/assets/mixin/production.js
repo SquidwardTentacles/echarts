@@ -467,23 +467,23 @@ export default {
         legend: {
           type: 'scroll',
           orient: 'vertical',
-          x: 'right',
-          y: 'bottom',
           textStyle: {
             color: '#fefeff',
-            fontSize: 12
+            fontSize: 10
           },
+          right:5,
           align: 'left',
           itemWidth: 15,
-          top: 20
+          // top: 0,
+          bottom:10
         },
         series: {
 
           name: '访问来源',
           type: 'pie',
-          radius: ['30%', '50%'],
+          radius: ['35%', '50%'],
           avoidLabelOverlap: false,
-          center: ['35%', '45%'],
+          center: ['35%', '50%'],
 
           labelLine: {
             show: true

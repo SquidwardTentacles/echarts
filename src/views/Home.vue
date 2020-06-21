@@ -158,6 +158,7 @@ export default {
       min-height: 2.975rem;
       padding: 0.2rem;
       width: 5.275rem;
+      margin-top: .4rem;
       box-sizing: border-box;
     }
     &.left {
@@ -183,14 +184,21 @@ export default {
       box-sizing: border-box;
       .outer {
         .content-i {
-          width: 45%;
+          // width: 45%;
+          background: url('../assets/img/8.png') no-repeat center center;
+          background-size: cover;
+          padding: .125rem;
+          box-sizing: border-box;
+          &:nth-child(1) {
+            margin-right:.125rem;
+          }
           p {
             color: #85efff;
             margin: 0.125rem;
           }
           .img {
-            width: 100%;
-            height: 1.5rem;
+            width: 2.3rem;
+            height:2.0625rem ;
             background: url("~@/assets/img/no-img.jpg") no-repeat center center;
             background-size: 100% 100%;
           }
