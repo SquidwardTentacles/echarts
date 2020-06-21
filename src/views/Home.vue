@@ -212,10 +212,7 @@ export default {
       min-width: 5.275rem;
       min-height: 3.225rem;
       box-sizing: border-box;
-      .line {
-        width: 4.75rem;
-        height: 2.2rem;
-      }
+      
     }
   }
   .map-box {

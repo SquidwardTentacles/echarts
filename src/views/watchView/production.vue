@@ -111,7 +111,7 @@
             </div>
           </div>
         </div>
-        <div class="box-sty line-outer">
+        <div class="box-sty line-outer flexbox">
           <div class="line" id="line"></div>
         </div>
       </div>
@@ -293,7 +293,14 @@ export default {
       }
     }
   }
-
+  .line-outer {
+    justify-content: center;
+    align-items: center;
+    .line {
+      width: 4.75rem;
+      height: 2.2rem;
+    }
+  }
   .map-box {
     .map {
       width: 100%;
@@ -390,7 +397,7 @@ export default {
           width: 5rem;
           height: 2.4875rem;
           margin: 0 auto;
-          padding-bottom: .3rem;
+          padding-bottom: 0.3rem;
           box-sizing: border-box;
         }
       }

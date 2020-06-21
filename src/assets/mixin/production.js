@@ -149,21 +149,21 @@ export default {
           borderWidth: 10
         },
         tooltip: {
-          padding:0,
+          padding: 0,
           trigger: 'axis',
           axisPointer: {
             type: 'shadow',
-            width:'40%'
+            width: '40%'
           }
         },
         xAxis: {
-          data: ["一", "二", "三", "四","五","六","七"],
+          data: ["一", "二", "三", "四", "五", "六", "七"],
           type: "category",
           name: "日期",
           nameLocation: "end",
           // 坐标轴刻度标签的相关设置
           axisLabel: {
-            color:'#e6e9ee '
+            color: '#e6e9ee '
           },
           axisLine: {
             lineStyle: {
@@ -183,8 +183,8 @@ export default {
           splitLine: {
             show: false
           },
-          axisLabel:{
-            color:'#e6e9e7'
+          axisLabel: {
+            color: '#e6e9e7'
           },
           axisLine: {
             lineStyle: {
@@ -200,7 +200,7 @@ export default {
         series: [{
             name: dataArr[0],
             type: "bar",
-            data: [250, 900, 400, 800, 1000,300,567],
+            data: [250, 900, 400, 800, 1000, 300, 567],
             barWidth: "40%",
             itemStyle: { //
               normal: {
@@ -471,11 +471,11 @@ export default {
             color: '#fefeff',
             fontSize: 10
           },
-          right:5,
+          right: 5,
           align: 'left',
           itemWidth: 15,
           // top: 0,
-          bottom:10
+          bottom: 10
         },
         series: {
 
@@ -679,7 +679,7 @@ export default {
             normal: {
               show: true,
               textStyle: {
-                color: "#fff"
+                color: "#dfe5f3"
               }
             },
             emphasis: {
@@ -692,26 +692,26 @@ export default {
           roam: true,
           itemStyle: {
             normal: {
-              borderColor: 'rgba(65, 145, 214, 0.8)',
+              areaColor: '#222294',//板块颜色
+              borderColor: '#d5dbeb',//线
+              shadowColor: '#d5dbeb',//外发光
+              shadowBlur: 10,
               borderWidth: 2,
-              areaColor: {
-                type: 'radial',
-                x: 0.5,
-                y: 0.5,
-                r: 0.8,
-                colorStops: [{
-                  offset: 0,
-                  color: 'rgba(65, 145, 214, 0.8)' // 0% 处的颜色
-                }, {
-                  offset: 1,
-                  color: 'rgba(65, 145, 214, 0.8)' // 100% 处的颜色
-                }],
-                globalCoord: false // 缺省为 false
-              },
-              /*  shadowColor: 'rgba(128, 217, 248, 1)',*/
-              shadowOffsetX: -2,
-              shadowOffsetY: 2,
-              shadowBlur: 10
+              // areaColor: {
+              //   type: 'radial',
+              //   x: 0.5,
+              //   y: 0.5,
+              //   r: 0.8,
+              //   colorStops: [{
+              //     offset: 0,
+              //     color: '#222294' // 0% 处的颜色
+              //   }, {
+              //     offset: 1,
+              //     color: '#232393' // 100% 处的颜色
+              //   }],
+              //   globalCoord: false // 缺省为 false
+              // },
+              // shadowColor: 'rgba(128, 217, 248, 1)',
             },
             emphasis: {
               areaColor: 'rgba(51, 133, 255, 1.0)',
@@ -743,13 +743,11 @@ export default {
             itemStyle: {
               normal: {
                 color: 'red', //标志颜色
+
               },
               emphasis: {
                 borderColor: '#fff',
-                borderWidth: 1
-              },
-              areaStyle: {
-                color: 'red', //默认的地图板块颜色
+                borderWidth: 1,
               },
             },
 
@@ -772,8 +770,8 @@ export default {
             itemStyle: {
               normal: {
                 color: '#05C3F9',
-                shadowBlur: 10,
-                shadowColor: '#05C3F9'
+                // shadowBlur: 10,
+                // shadowColor: '#05C3F9'
               }
             },
             zlevel: 1
@@ -916,30 +914,30 @@ export default {
             roam: true,
             itemStyle: {
               normal: {
-                borderColor: 'rgba(65, 145, 214, 0.8)',
-                borderWidth: 2,
-                areaColor: {
+                // borderColor: 'rgba(65, 145, 214, 0.8)',
+                // borderWidth: 2,
+                // areaColor: {
 
-                  type: 'radial',
-                  x: 0.5,
-                  y: 0.5,
-                  r: 0.8,
-                  colorStops: [{
-                    offset: 0,
-                    color: 'rgba(65, 145, 214, 0.8)' // 0% 处的颜色
-                  }, {
-                    offset: 1,
-                    color: 'rgba(65, 145, 214, 0.8)' // 100% 处的颜色
-                  }],
-                  globalCoord: false // 缺省为 false
-                },
+                //   type: 'radial',
+                //   x: 0.5,
+                //   y: 0.5,
+                //   r: 0.8,
+                //   colorStops: [{
+                //     offset: 0,
+                //     color: 'rgba(65, 145, 214, 0.8)' // 0% 处的颜色
+                //   }, {
+                //     offset: 1,
+                //     color: 'rgba(65, 145, 214, 0.8)' // 100% 处的颜色
+                //   }],
+                //   globalCoord: false // 缺省为 false
+                // },
                 /*  shadowColor: 'rgba(128, 217, 248, 1)',*/
-                shadowOffsetX: -2,
-                shadowOffsetY: 2,
-                shadowBlur: 10
+                // shadowOffsetX: -2,
+                // shadowOffsetY: 2,
+                // shadowBlur: 10
               },
               emphasis: {
-                areaColor: 'rgba(51, 133, 255, 1.0)',
+                areaColor: 'rgba(51, 133, 255, 1.0)',//鼠标hover颜色
                 borderWidth: 0
               }
             }
@@ -987,10 +985,6 @@ export default {
                 normal: {
                   color: 'red', //标志颜色
                 },
-                emphasis: {
-                  borderColor: '#fff',
-                  borderWidth: 1
-                }
               },
 
               data: convertData(data),
@@ -1010,11 +1004,11 @@ export default {
               },
               hoverAnimation: true,
               itemStyle: {
-                normal: {
-                  color: '#05C3F9',
-                  shadowBlur: 10,
-                  shadowColor: '#05C3F9'
-                }
+                // normal: {
+                //   // color: '#05C3F9',
+                //   // shadowBlur: 10,
+                //   // shadowColor: '#05C3F9'
+                // }
               },
               zlevel: 1
             }
