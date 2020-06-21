@@ -303,6 +303,11 @@ export default {
             lineStyle: {
               color: '#248582'
             }
+          },
+          splitLine:{
+            lineStyle: {
+              color:'#51fdc3'
+            }
           }
         }],
         series: [

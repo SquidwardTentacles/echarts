@@ -18,7 +18,7 @@
     let setWidth = width
     if (width > 1920) {
       setWidth = 1920
-    } else if (width < 1100) {
+    } else if (width < 1240) {
       setWidth = 1100
     }
     var rem = setWidth / 24
