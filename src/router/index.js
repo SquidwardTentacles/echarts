@@ -13,12 +13,14 @@ const routes = [
       {
         path: '/',
         name: 'production',
-        component: () => import(/* webpackChunkName: "production" */ '../views/watchView/production.vue')
+        component: () => import(/* webpackChunkName: "production" */ '../views/watchView/production.vue'),
+        subName:'生产'
       },
       {
         path: '/home/internetThings',
         name: 'internetThigs',
-        component: () => import(/* webpackChunkName: "internetThigs" */ '../views/watchView/internetOfThings.vue')
+        component: () => import(/* webpackChunkName: "internetThigs" */ '../views/watchView/internetOfThings.vue'),
+        subName:'物联网'
       },
     ]
   },

@@ -1,6 +1,5 @@
 <template>
-  <div id="app"
-       class="flexbox">
+  <div id="app">
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -17,7 +16,8 @@ html,
 #app {
   padding: 0;
   margin: 0;
-  min-height: 100% !important;
+  // min-height: 100% !important;
+  min-width: 100% !important;
 }
 .flexbox {
   display: flex;
@@ -85,9 +85,5 @@ ul {
       color: #42b983;
     }
   }
-}
-.content {
-  width: 100%;
-  flex: 1;
 }
 </style>

@@ -463,7 +463,7 @@ export default {
           },
           align: 'left',
           itemWidth: 15,
-          top: 30
+          top: 20
         },
         series:
         {
@@ -472,7 +472,7 @@ export default {
           type: 'pie',
           radius: ['30%', '50%'],
           avoidLabelOverlap: false,
-          center: ['35%', '50%'],
+          center: ['35%', '45%'],
 
           labelLine: {
             show: true
